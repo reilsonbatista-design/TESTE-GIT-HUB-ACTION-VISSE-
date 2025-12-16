@@ -16,31 +16,13 @@ jobs:
     - name: Checar o código do repositório
       uses: actions/checkout@v2  # Faz o checkout do código do repositório
 
-    - name: Configurar o Node.js
+    - name: Configurar Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # A versão do Node.js usada no projeto
+        node-version: '14'  # Escolha a versão que seu projeto utiliza
 
-    # Instalar dependências no diretório 'client'
-    - name: Instalar dependências do Client
-      run: |
-        cd client  # Vai para a pasta 'client'
-        npm install  # Instala as dependências do 'client'
+    - name: Instalar dependências
+      run: npm install  # Ou 'yarn install' se você estiver usando Yarn
 
-    # Instalar dependências no diretório 'server'
-    - name: Instalar dependências do Server
-      run: |
-        cd server  # Vai para a pasta 'server'
-        npm install  # Instala as dependências do 'server'
-
-    # Rodar os testes do diretório 'client'
-    - name: Rodar os testes do Client
-      run: |
-        cd client  # Vai para a pasta 'client'
-        npm test  # Executa os testes do 'client'
-
-    # Rodar os testes do diretório 'server'
-    - name: Rodar os testes do Server
-      run: |
-        cd server  # Vai para a pasta 'server'
-        npm test  # Executa os testes do 'server'
+    - name: Rodar os testes
+      run: npm test  # Ou 'yarn test' se você estiver usando Yarn
