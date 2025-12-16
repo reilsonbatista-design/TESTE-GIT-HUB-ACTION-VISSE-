@@ -1,1 +1,33 @@
+# Definindo o nome do workflow
+name: Node.js CI
+
+# Definindo quando o workflow será executado. No caso, em push e pull requests para o branch 'main'.
+on:
+  push:
+    branches:
+      - main  # Este workflow será executado sempre que houver um push no branch 'main'
+  pull_request:
+    branches:
+      - main  # Também será executado quando um pull request for feito para o branch 'main'
+
+# Definindo o job que será executado, com o nome 'build'. Esse job será responsável por rodar os testes.
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Estamos usando uma máquina virtual com Ubuntu para rodar o workflow
+
+    # Etapas que o job irá executar
+    steps:
+    - name: Checar o código do repositório
+      uses: actions/checkout@v2  # A ação 'checkout' vai pegar o código mais recente do repositório
+
+    - name: Configurar o Node.js
+      uses: actions/setup-node@v2  # Esta ação configura o Node.js no ambiente
+      with:
+        node-version: '14'  # Aqui estamos especificando a versão 14 do Node.js que será usada
+
+    - name: Instalar dependências
+      run: npm install  # Comando para instalar todas as dependências do projeto que estão no 'package.json'
+
+    - name: Rodar os testes
+      run: npm test  # Aqui estamos rodando os testes que estão configurados no projeto (usando Jest, Mocha, etc.)
 
