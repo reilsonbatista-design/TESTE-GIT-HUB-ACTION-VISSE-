@@ -21,8 +21,26 @@ jobs:
       with:
         node-version: '14'  # A versão do Node.js usada no projeto
 
-    - name: Instalar dependências
-      run: npm install  # Instala as dependências do projeto
+    # Instalar dependências no diretório 'client'
+    - name: Instalar dependências do Client
+      run: |
+        cd client  # Vai para a pasta 'client'
+        npm install  # Instala as dependências do 'client'
 
-    - name: Rodar os testes
-      run: npm test  # Executa os testes configurados no seu projeto
+    # Instalar dependências no diretório 'server'
+    - name: Instalar dependências do Server
+      run: |
+        cd server  # Vai para a pasta 'server'
+        npm install  # Instala as dependências do 'server'
+
+    # Rodar os testes do diretório 'client'
+    - name: Rodar os testes do Client
+      run: |
+        cd client  # Vai para a pasta 'client'
+        npm test  # Executa os testes do 'client'
+
+    # Rodar os testes do diretório 'server'
+    - name: Rodar os testes do Server
+      run: |
+        cd server  # Vai para a pasta 'server'
+        npm test  # Executa os testes do 'server'
