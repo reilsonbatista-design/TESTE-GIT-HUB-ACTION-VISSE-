@@ -21,8 +21,20 @@ jobs:
       with:
         node-version: '14'  # Escolha a versão que seu projeto utiliza
 
-    - name: Instalar dependências
-      run: npm install  # Ou 'yarn install' se você estiver usando Yarn
+    - name: Navegar até o diretório do cliente
+      run: cd client  # Navega até o diretório 'client'
 
-    - name: Rodar os testes
-      run: npm test  # Ou 'yarn test' se você estiver usando Yarn
+    - name: Instalar dependências no cliente
+      run: npm install  # Instala as dependências no diretório 'client'
+
+    - name: Rodar os testes no cliente
+      run: npm test  # Roda os testes no diretório 'client'
+
+    - name: Navegar até o diretório do servidor
+      run: cd ../server  # Navega até o diretório 'server'
+
+    - name: Instalar dependências no servidor
+      run: npm install  # Instala as dependências no diretório 'server'
+
+    - name: Rodar os testes no servidor
+      run: npm test  # Roda os testes no diretório 'server'
