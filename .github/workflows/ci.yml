@@ -21,20 +21,20 @@ jobs:
       with:
         node-version: '14'  # Escolha a versão que seu projeto utiliza
 
-    - name: Navegar até o diretório do cliente
-      run: cd client  # Navega até o diretório 'client'
+    - name: Verificar diretório atual antes de instalar no cliente
+      run: pwd  # Confirma em qual diretório estamos para garantir que estamos no lugar certo
 
-    - name: Instalar dependências no cliente
-      run: npm install  # Instala as dependências no diretório 'client'
+    - name: Navegar até o diretório do cliente
+      run: cd client && npm install  # Navega até o diretório 'client' e instala as dependências
 
     - name: Rodar os testes no cliente
-      run: npm test  # Roda os testes no diretório 'client'
+      run: cd client && npm test  # Roda os testes no diretório 'client'
+
+    - name: Verificar diretório atual antes de instalar no servidor
+      run: pwd  # Confirma o diretório atual antes de rodar o servidor
 
     - name: Navegar até o diretório do servidor
-      run: cd ../server  # Navega até o diretório 'server'
-
-    - name: Instalar dependências no servidor
-      run: npm install  # Instala as dependências no diretório 'server'
+      run: cd server && npm install  # Navega até o diretório 'server' e instala as dependências
 
     - name: Rodar os testes no servidor
-      run: npm test  # Roda os testes no diretório 'server'
+      run: cd server && npm test  # Roda os testes no diretório 'server'
